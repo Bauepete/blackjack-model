@@ -1,10 +1,25 @@
 struct Dealer {
-    var numberOfCardsOnStack = 312
+    var numberOfCardsOnStack: Int {
+        get {
+            cardsOnStack.count
+        }
+    }
     
-//    private var cardsOnStack
+    private var cardsOnStack: [Card] = []
+    
+    init() {
+        for _ in 1 ... 6 {
+            for rank in Card.Rank.allCases {
+                for suit in Card.Suit.allCases {
+                    cardsOnStack.append(Card(rank: rank, suit: suit))
+                }
+            }
+        }
+    }
     
     mutating func dealOneCard() -> Card? {
-        numberOfCardsOnStack -= 1
-        return nil
+        let cardToReturn = cardsOnStack[0]
+        cardsOnStack.removeFirst()
+        return cardToReturn
     }
 }

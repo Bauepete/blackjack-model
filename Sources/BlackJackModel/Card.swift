@@ -30,7 +30,7 @@ struct Card {
         case jack, queen, king, ace
     }
 
-    enum Suit {
+    enum Suit: CaseIterable {
         case spades, hearts, diamonds, clubs
     }
 }
