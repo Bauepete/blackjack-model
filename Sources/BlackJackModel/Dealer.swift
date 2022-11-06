@@ -9,11 +9,19 @@ struct Dealer {
     
     init() {
         for _ in 1 ... 6 {
-            for rank in Card.Rank.allCases {
-                for suit in Card.Suit.allCases {
-                    cardsOnStack.append(Card(rank: rank, suit: suit))
-                }
-            }
+            appendOneDeck()
+        }
+    }
+    
+    fileprivate mutating func appendOneDeck() {
+        for rank in Card.Rank.allCases {
+            appendAllCardsOf(of: rank)
+        }
+    }
+    
+    fileprivate mutating func appendAllCardsOf(of rank: Card.Rank) {
+        for suit in Card.Suit.allCases {
+            cardsOnStack.append(Card(rank: rank, suit: suit))
         }
     }
     
