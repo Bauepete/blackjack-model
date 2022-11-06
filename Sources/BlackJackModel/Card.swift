@@ -6,9 +6,10 @@
 //
 
 struct Card {
-    var isFaceUp = false
+    let isFaceUp = true
     let rank: Rank
     let suit: Suit
+    
     var value: Int {
         get {
             var value = min(rank.rawValue, 10)

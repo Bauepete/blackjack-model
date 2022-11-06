@@ -24,8 +24,9 @@ final class DealerTests: XCTestCase {
         }
     }
     
-    func testThatItShouldDealTheCardFaceUp_GivenTheCardIsDealtToThePlayer() {
+    func testThatItShouldDealTheCardFaceUp_GivenTheCardIsDealtToThePlayer() throws {
         var d = Dealer()
-        XCTAssertNotNil(d.dealOneCard())
+        let dealtCard = try XCTUnwrap(d.dealOneCard())
+        XCTAssertTrue(dealtCard.isFaceUp)
     }
 }
