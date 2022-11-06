@@ -36,4 +36,21 @@ final class CardTests: XCTestCase {
         }
         XCTAssertEqual(expectedValues, cardsUnderTest)
     }
+    
+    func testThatTwoCardsAreEqual_GivenTheyHaveEqualValues() {
+        let anySuit = Card.Suit.spades
+        let anyRank = Card.Rank.eight
+        
+        let c1 = Card(rank: anyRank, suit: anySuit)
+        let c2 = Card(rank: anyRank, suit: anySuit)
+        
+        XCTAssertEqual(c1, c2)
+    }
+    
+    func testThatTwoCardsAreUnequal_GivenTheyHaveDifferentValues() {
+        let c1 = Card(rank: Card.Rank.eight, suit: Card.Suit.clubs)
+        let c2 = Card(rank: Card.Rank.nine, suit: Card.Suit.clubs)
+        
+        XCTAssertNotEqual(c1, c2)
+    }
 }

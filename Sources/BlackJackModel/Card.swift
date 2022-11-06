@@ -5,7 +5,7 @@
 //  Created by Peter Bauer on 06.11.22.
 //
 
-struct Card {
+struct Card: Equatable {
     let isFaceUp = true
     let rank: Rank
     let suit: Suit
