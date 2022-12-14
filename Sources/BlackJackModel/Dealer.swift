@@ -7,8 +7,8 @@ struct Dealer {
     
     private var cardsOnStack: [Card] = []
     
-    init() {
-        for _ in 1 ... 6 {
+    init(usingDecks numberOfDecks: Int = 6) {
+        for _ in 1 ... numberOfDecks {
             appendOneDeck()
         }
     }

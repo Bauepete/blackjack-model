@@ -8,6 +8,11 @@ final class DealerTests: XCTestCase {
         XCTAssertEqual(d.numberOfCardsOnStack, 312)
     }
     
+    func testThatItShouldHaveAMultipleOf52OnStack_GivenConstructedWithAValidNumberOfDecks() {
+        let d = Dealer(usingDecks: 1)
+        XCTAssertEqual(52, d.numberOfCardsOnStack)
+    }
+    
     func testThatItShouldHaveOneCardLess_GivenOneCardDealt() {
         var d = Dealer()
         let numberOfCardsOnStack = d.numberOfCardsOnStack
