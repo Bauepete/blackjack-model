@@ -15,11 +15,11 @@ struct Dealer {
     
     fileprivate mutating func appendOneDeck() {
         for rank in Card.Rank.allCases {
-            appendAllCardsOf(of: rank)
+            appendAllCards(of: rank)
         }
     }
     
-    fileprivate mutating func appendAllCardsOf(of rank: Card.Rank) {
+    fileprivate mutating func appendAllCards(of rank: Card.Rank) {
         for suit in Card.Suit.allCases {
             cardsOnStack.append(Card(rank: rank, suit: suit))
         }
