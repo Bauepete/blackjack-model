@@ -9,7 +9,7 @@ import XCTest
 
 final class TableTests: XCTestCase {
     func testThatPlayerIsInPlayerList_GivenItIsAddedToTable() {
-        var table = Table(dealer: Dealer())
+        var table = Table(dealer: Dealer()!)
         
             table.add(player: Player())
             
@@ -17,7 +17,7 @@ final class TableTests: XCTestCase {
     }
     
     func testThatItRefusesToAddPlayers_GivenMoreThan7PlayersAreOnTheTable() {
-        var table = Table(dealer: Dealer())
+        var table = Table(dealer: Dealer()!)
         
         for _ in 1 ... 7 {
              table.add(player: Player())

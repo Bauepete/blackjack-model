@@ -4,10 +4,14 @@ struct Dealer {
             cardsOnStack.count
         }
     }
+        
+    private let maximalNumberOfDecks = 8
     
     private var cardsOnStack: [Card] = []
     
-    init(usingDecks numberOfDecks: Int = 6) {
+    init?(usingDecks numberOfDecks: Int = 6) {
+        guard numberOfDecks >= 1 && numberOfDecks <= maximalNumberOfDecks else { return nil }
+
         for _ in 1 ... numberOfDecks {
             appendOneDeck()
         }
