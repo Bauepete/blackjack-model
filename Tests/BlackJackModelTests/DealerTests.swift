@@ -3,14 +3,14 @@ import XCTest
 
 final class DealerTests: XCTestCase {
     
-    func testThatItShouldHave312CardsOnStack_GivenConstructedByDefault() {
-        let d = Dealer()
-        XCTAssertEqual(d?.numberOfCardsOnStack, 312)
+    func testThatItShouldHave312CardsOnStack_GivenConstructedByDefault() throws {
+        let d = try XCTUnwrap(Dealer())
+        XCTAssertEqual(d.numberOfCardsOnStack, 312)
     }
     
-    func testThatItShouldHaveAMultipleOf52OnStack_GivenConstructedWithAValidNumberOfDecks() {
-        let d = Dealer(usingDecks: 1)
-        XCTAssertEqual(52, d?.numberOfCardsOnStack)
+    func testThatItShouldHaveAMultipleOf52OnStack_GivenConstructedWithAValidNumberOfDecks() throws {
+        let d = try XCTUnwrap(Dealer(usingDecks: 1))
+        XCTAssertEqual(52, d.numberOfCardsOnStack)
     }
     
     func testThatItShouldFail_GivenConstructedWith0Decks() {
@@ -23,30 +23,29 @@ final class DealerTests: XCTestCase {
         XCTAssertNil(d)
     }
     
-    func testThatItShouldShuffle_GivenConstructedCorrectly() {
-        let d = Dealer(usingDecks: 1, shufflingWith: { cards in [] })
-        XCTAssertEqual(0, d!.numberOfCardsOnStack)
+    func testThatItShouldShuffle_GivenConstructedCorrectly() throws {
+        let d = try XCTUnwrap(Dealer(usingDecks: 1, shufflingWith: { cards in [] }))
+        XCTAssertEqual(0, d.numberOfCardsOnStack)
     }
     
-    func testThatItShouldHaveOneCardLess_GivenOneCardDealt() {
-        var d = Dealer()
-        guard let numberOfCardsOnStack = d?.numberOfCardsOnStack else {
-            XCTFail()
-            return
-        }
-        _ = d?.dealOneCard()
-        XCTAssertEqual(d?.numberOfCardsOnStack, numberOfCardsOnStack - 1)
+    func testThatItShouldHaveOneCardLess_GivenOneCardDealt() throws {
+        // arrange
+        var d = try XCTUnwrap(Dealer())
+        let numberOfCardsOnStack = d.numberOfCardsOnStack
+        
+        // act
+        _ = d.dealOneCard()
+        
+        // assert
+        XCTAssertEqual(d.numberOfCardsOnStack, numberOfCardsOnStack - 1)
     }
     
-    func testThatItShouldDealOneCard_GivenEnoughCardsOnStack() {
-        var d = Dealer()
-        guard let numberOfCardsAvailable = d?.numberOfCardsOnStack else {
-            XCTFail()
-            return
-        }
+    func testThatItShouldDealOneCard_GivenEnoughCardsOnStack() throws {
+        var d = try XCTUnwrap(Dealer())
+        let numberOfCardsAvailable = d.numberOfCardsOnStack
         
         for _ in 0 ..< numberOfCardsAvailable {
-            XCTAssertNotNil(d?.dealOneCard())
+            XCTAssertNotNil(d.dealOneCard())
         }
     }
     
