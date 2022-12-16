@@ -23,6 +23,11 @@ final class DealerTests: XCTestCase {
         XCTAssertNil(d)
     }
     
+    func testThatItShouldShuffle_GivenConstructedCorrectly() {
+        let d = Dealer(usingDecks: 1, shufflingWith: { cards in [] })
+        XCTAssertEqual(0, d!.numberOfCardsOnStack)
+    }
+    
     func testThatItShouldHaveOneCardLess_GivenOneCardDealt() {
         var d = Dealer()
         guard let numberOfCardsOnStack = d?.numberOfCardsOnStack else {
