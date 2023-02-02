@@ -10,7 +10,7 @@ struct Dealer {
     private var cardsOnStack: [Card] = []
         
     init?(usingDecks numberOfDecks: Int = 6,
-          shufflingWith shuffleFunc: ([Card]) -> [Card] = { stack in stack.shuffled() }) {
+          shufflingWith shuffleFunc: ([Card]) -> [Card] = { $0.shuffled() }) {
         
         guard numberOfDecks >= 1 && numberOfDecks <= maximalNumberOfDecks else { return nil }
         addToStack(numberOfDecks)
