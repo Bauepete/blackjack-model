@@ -7,10 +7,12 @@
 
 struct Table {
     let dealer: Dealer
+    let maxNumberOfPlayers: Int
     private(set) var players: [Player] = []
     
-    init(dealer: Dealer) {
+    init(dealer: Dealer, withMaxNumberOfPlayers: Int = 5) {
         self.dealer = dealer
+        self.maxNumberOfPlayers = withMaxNumberOfPlayers
     }
     
     mutating func add(player: Player) {

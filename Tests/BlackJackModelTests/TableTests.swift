@@ -11,18 +11,19 @@ final class TableTests: XCTestCase {
     func testThatPlayerIsInPlayerList_GivenItIsAddedToTable() {
         var table = Table(dealer: Dealer()!)
         
-            table.add(player: Player())
-            
+        table.add(player: Player())
+        
         XCTAssertEqual(1, table.players.count)
     }
     
-    func testThatItRefusesToAddPlayers_GivenMoreThan7PlayersAreOnTheTable() {
-        var table = Table(dealer: Dealer()!)
+    func testThatItRefusesToAddPlayers_GivenMaxNumberOfPlayersAreOnTheTable() {
+        let maxNumberOfPlayers = 7
+        var table = Table(dealer: Dealer()!, withMaxNumberOfPlayers: 7)
         
-        for _ in 1 ... 7 {
-             table.add(player: Player())
+        for _ in 1 ... maxNumberOfPlayers {
+            table.add(player: Player())
         }
         table.add(player: Player())
-        XCTAssertEqual(7, table.players.count)
+        XCTAssertEqual(maxNumberOfPlayers, table.players.count)
     }
 }
