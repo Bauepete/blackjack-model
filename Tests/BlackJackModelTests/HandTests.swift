@@ -81,4 +81,12 @@ final class HandTests: XCTestCase {
         
         XCTAssertEqual(13, hand.value)
     }
+    
+    func testThatAnAceIsCalculatedAs1_GivenTheValueWouldExceed21Otherwise() {
+        hand.append(Card(rank: .ten, suit: .clubs))
+        hand.append(Card(rank: .five, suit: .diamonds))
+        hand.append(Card(rank: .ace, suit: .hearts))
+        
+        XCTAssertEqual(16, hand.value)
+    }
 }
