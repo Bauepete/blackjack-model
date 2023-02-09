@@ -19,7 +19,7 @@ struct Player {
         return strategy(hand)
     }
     
-    init(usingStrategy strategy: @escaping ([Card]) -> PlayerDecision = defaultStrategy) {
+    init(usingStrategy strategy: @escaping (Hand) -> PlayerDecision = defaultStrategy) {
         self.strategy = strategy
     }
     
