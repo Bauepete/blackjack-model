@@ -49,6 +49,15 @@ final class DealerTests: XCTestCase {
         }
     }
     
+    func testThatItShouldReturnNilWhenDealing_GivenStackIsExausted() throws {
+        var d = try XCTUnwrap(Dealer())
+        
+        for _ in 0 ..< d.numberOfCardsOnStack {
+            _ = d.dealOneCard()
+        }
+        XCTAssertNil(d.dealOneCard())
+    }
+    
     func testThatItShouldDealTheCardFaceUp_GivenTheCardIsDealtToThePlayer() throws {
         var d = Dealer()
         let dealtCard = try XCTUnwrap(d?.dealOneCard())

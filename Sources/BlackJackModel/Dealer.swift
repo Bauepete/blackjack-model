@@ -36,6 +36,8 @@ struct Dealer {
     }
     
     mutating func dealOneCard() -> Card? {
+        guard !cardsOnStack.isEmpty else { return nil }
+        
         let cardToReturn = cardsOnStack[0]
         cardsOnStack.removeFirst()
         return cardToReturn
