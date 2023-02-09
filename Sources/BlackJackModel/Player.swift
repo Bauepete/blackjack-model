@@ -8,7 +8,7 @@
 enum PlayerDecision { case hit, stand, doubleDown, split, surrender }
 
 func defaultStrategy(using hand: Hand) -> PlayerDecision {
-    return .hit
+    return hand.value <= 17 ? .hit : .stand
 }
 
 struct Player {

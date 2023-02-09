@@ -31,4 +31,10 @@ final class PlayerTests: XCTestCase {
         let decision = defaultStrategy(using: [])
         XCTAssertEqual(.hit, decision)
     }
+    
+    func testThatItShouldStandIfHandHasValueOf18_GivenDefaultStrategy() {
+        let hand: Hand = [Card(rank: .ace, suit: .clubs), Card(rank: .seven, suit: .clubs)]
+        let decision = defaultStrategy(using: hand)
+        XCTAssertEqual(.stand, decision)
+    }
 }
