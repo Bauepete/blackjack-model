@@ -16,7 +16,7 @@ struct Table {
     }
     
     mutating func add(player: Player) {
-        if players.count < 7 {
+        if players.count < maxNumberOfPlayers {
             players.append(player)
         }
     }

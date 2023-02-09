@@ -17,8 +17,8 @@ final class TableTests: XCTestCase {
     }
     
     func testThatItRefusesToAddPlayers_GivenMaxNumberOfPlayersAreOnTheTable() {
-        let maxNumberOfPlayers = 7
-        var table = Table(dealer: Dealer()!, withMaxNumberOfPlayers: 7)
+        let maxNumberOfPlayers = 8
+        var table = Table(dealer: Dealer()!, withMaxNumberOfPlayers: maxNumberOfPlayers)
         
         for _ in 1 ... maxNumberOfPlayers {
             table.add(player: Player())
