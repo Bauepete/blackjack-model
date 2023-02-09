@@ -89,4 +89,20 @@ final class HandTests: XCTestCase {
         
         XCTAssertEqual(16, hand.value)
     }
+    
+    func testThatItAnAceIsCalculatedAs1_GivenAceIsFirstCard() {
+        hand.append(Card(rank: .ace, suit: .hearts))
+        hand.append(Card(rank: .ten, suit: .clubs))
+        hand.append(Card(rank: .five, suit: .diamonds))
+        
+        XCTAssertEqual(16, hand.value)
+    }
+    
+    func testThatItsValueIs13_GivenThreeAces() {
+        hand.append(Card(rank: .ace, suit: .hearts))
+        hand.append(Card(rank: .ace, suit: .clubs))
+        hand.append(Card(rank: .ace, suit: .diamonds))
+        
+        XCTAssertEqual(13, hand.value)
+    }
 }
