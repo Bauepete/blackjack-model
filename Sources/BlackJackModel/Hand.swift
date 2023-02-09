@@ -9,6 +9,6 @@ typealias Hand = [Card]
 
 extension Array where Element == Card {
     var value: Int {
-        self.reduce(0, { x, y in x + y.value })
+        self.reduce(0, { $0 + $1.value })
     }
 }
