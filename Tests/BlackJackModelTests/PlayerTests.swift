@@ -21,4 +21,10 @@ final class PlayerTests: XCTestCase {
         player.receive(card: dealtCard)
         XCTAssertEqual(player.hand, [dealtCard])
     }
+    
+    func testThatItShouldUseAStrategy_GivenAskedItsNextDecision() {
+        let player = Player(usingStrategy: { () -> PlayerDecision in .surrender })
+        
+        XCTAssertEqual(PlayerDecision.surrender, player.decision)
+    }
 }
