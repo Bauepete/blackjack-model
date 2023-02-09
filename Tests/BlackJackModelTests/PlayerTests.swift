@@ -23,8 +23,12 @@ final class PlayerTests: XCTestCase {
     }
     
     func testThatItShouldUseAStrategy_GivenAskedItsNextDecision() {
-        let player = Player(usingStrategy: { () -> PlayerDecision in .surrender })
-        
+        let player = Player(usingStrategy: {_ in .surrender })
         XCTAssertEqual(PlayerDecision.surrender, player.decision)
+    }
+    
+    func testThatItShouldHitIfHandIsEmpty_GivenDefaultStrategy() {
+        let decision = defaultStrategy(using: [])
+        XCTAssertEqual(.hit, decision)
     }
 }

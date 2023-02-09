@@ -7,19 +7,19 @@
 
 enum PlayerDecision { case hit, stand, doubleDown, split, surrender }
 
-func defaultStrategy() -> PlayerDecision {
-    return .stand
+func defaultStrategy(using hand: Hand) -> PlayerDecision {
+    return .hit
 }
 
 struct Player {
-    private (set) var hand: [Card] = []
-    private var strategy: () -> PlayerDecision
+    private (set) var hand: Hand = []
+    private var strategy: (Hand) -> PlayerDecision
     
     var decision: PlayerDecision {
-        return strategy()
+        return strategy(hand)
     }
     
-    init(usingStrategy strategy: @escaping () -> PlayerDecision = defaultStrategy) {
+    init(usingStrategy strategy: @escaping ([Card]) -> PlayerDecision = defaultStrategy) {
         self.strategy = strategy
     }
     
