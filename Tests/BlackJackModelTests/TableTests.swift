@@ -26,4 +26,14 @@ final class TableTests: XCTestCase {
         table.add(player: Player())
         XCTAssertEqual(maxNumberOfPlayers, table.players.count)
     }
+    
+    func testThatItShouldAskTheDealerToDealEachPlayerTwoCardsAndTheDealerOneCard_GivenStartRoundIsCalled() throws {
+        var table = Table(dealer: try XCTUnwrap(Dealer()))
+        for _ in 1 ... 2 { table.add(player: Player()) }
+        
+        table.startRound()
+        
+        table.players.forEach({ XCTAssertEqual(2, $0.hand.count) })
+        XCTAssertEqual(1, table.dealer.hand.count)
+    }
 }

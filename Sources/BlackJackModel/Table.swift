@@ -20,4 +20,11 @@ struct Table {
             players.append(player)
         }
     }
+    
+    mutating func startRound() {
+        for (i, _) in players.enumerated() {
+            players[i].receive(card: Card(rank: .ace, suit: .clubs))
+            players[i].receive(card: Card(rank: .ace, suit: .clubs))
+        }
+    }
 }

@@ -8,6 +8,8 @@ struct Dealer {
     private let maximalNumberOfDecks = 8
     
     private var cardsOnStack: [Card] = []
+    
+    private (set) var hand: Hand = []
         
     init?(usingDecks numberOfDecks: Int = 6,
           shufflingWith shuffleFunc: ([Card]) -> [Card] = { $0.shuffled() }) {
