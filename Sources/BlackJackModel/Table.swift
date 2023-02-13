@@ -6,7 +6,7 @@
 //
 
 struct Table {
-    let dealer: Dealer
+    var dealer: Dealer
     let maxNumberOfPlayers: Int
     private(set) var players: [Player] = []
     
@@ -26,5 +26,6 @@ struct Table {
             players[i].receive(card: Card(rank: .ace, suit: .clubs))
             players[i].receive(card: Card(rank: .ace, suit: .clubs))
         }
+        dealer.receive(card: Card(rank: .ace, suit: .clubs))
     }
 }

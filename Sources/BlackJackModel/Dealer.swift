@@ -37,6 +37,10 @@ struct Dealer {
         }
     }
     
+    mutating func receive(card: Card) {
+        hand.append(card)
+    }
+    
     mutating func dealOneCard() -> Card? {
         guard !cardsOnStack.isEmpty else { return nil }
         
