@@ -27,15 +27,30 @@ final class TableTests: XCTestCase {
         XCTAssertEqual(maxNumberOfPlayers, table.players.count)
     }
     
-    func testThatItShouldAskTheDealerToDealEachPlayerTwoCardsAndTheDealerOneCard_GivenStartRoundIsCalled() throws {
+    func testThatItShouldAskTheDealerToDealFiveCards_GivenTwoPlayersAndStartRoundIsCalled() throws {
         var table = Table(dealer: try XCTUnwrap(Dealer()))
         for _ in 1 ... 2 { table.add(player: Player()) }
         let cardsOnDealerStack = table.dealer.numberOfCardsOnStack
         
         table.startRound()
         
-        table.players.forEach({ XCTAssertEqual(2, $0.hand.count) })
-        XCTAssertEqual(1, table.dealer.hand.count)
         XCTAssertEqual(cardsOnDealerStack - 5, table.dealer.numberOfCardsOnStack)
+    }
+    
+    func testThatItShouldAskTheDealerToDealTwoCardsEachPlayer_GivenStartRoundIsCalled() throws {
+        var table = Table(dealer: try XCTUnwrap(Dealer()))
+        for _ in 1 ... 2 { table.add(player: Player()) }
+        
+        table.startRound()
+        
+        table.players.forEach({ XCTAssertEqual(2, $0.hand.count) })
+    }
+    
+    func testThatItShouldAskTheDealerToDealOneCardToTheDealer_GivenStartRoundIsCalled() throws {
+        var table = Table(dealer: try XCTUnwrap(Dealer()))
+        for _ in 1 ... 2 { table.add(player: Player()) }
+        
+        table.startRound()
+        XCTAssertEqual(1, table.dealer.hand.count)
     }
 }
