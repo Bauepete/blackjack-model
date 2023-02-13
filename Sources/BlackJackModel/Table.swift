@@ -23,9 +23,15 @@ struct Table {
     
     mutating func startRound() {
         for (i, _) in players.enumerated() {
-            players[i].receive(card: Card(rank: .ace, suit: .clubs))
-            players[i].receive(card: Card(rank: .ace, suit: .clubs))
+            if let dealtCard = dealer.dealOneCard() {
+                players[i].receive(card: dealtCard)
+            }
+            if let dealtCard = dealer.dealOneCard() {
+                players[i].receive(card: dealtCard)
+            }
         }
-        dealer.receive(card: Card(rank: .ace, suit: .clubs))
+        if let dealtCard = dealer.dealOneCard() {
+            dealer.receive(card: dealtCard)
+        }
     }
 }
