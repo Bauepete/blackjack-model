@@ -20,16 +20,26 @@ struct Table {
             players.append(player)
         }
     }
-    
+        
     mutating func startRound() {
+        dealToPlayers()
+        dealToDealer()
+    }
+
+    fileprivate mutating func dealToPlayers() {
         for (i, _) in players.enumerated() {
-            if let dealtCard = dealer.dealOneCard() {
-                players[i].receive(card: dealtCard)
-            }
-            if let dealtCard = dealer.dealOneCard() {
-                players[i].receive(card: dealtCard)
-            }
+            dealCardToPlayer(atBox: i)
+            dealCardToPlayer(atBox: i)
         }
+    }
+
+    fileprivate mutating func dealCardToPlayer(atBox i: Int) {
+        if let dealtCard = dealer.dealOneCard() {
+            players[i].receive(card: dealtCard)
+        }
+    }
+    
+    fileprivate mutating func dealToDealer() {
         if let dealtCard = dealer.dealOneCard() {
             dealer.receive(card: dealtCard)
         }
